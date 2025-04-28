@@ -28,13 +28,13 @@ footer {
   gap: 20px;
 }
 
-.footer-links a {
+.footer-links a, .footer-links Link {
   color: white;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.footer-links a:hover {
+.footer-links a:hover, .footer-links Link:hover {
   color: #007BFF;
 }
 

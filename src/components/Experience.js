@@ -14,6 +14,7 @@ function Experience() {
     'vc-analyst': {
       title: 'Analyst (Full-time)',
       company: 'Cornerstone Venture',
+      period: 'Sep. 2025 – Present',
       description: 'Working as a full-time analyst at Cornerstone Venture, analyzing startup investment opportunities.',
       details: [
         'Conducted market research and due diligence for potential investments',

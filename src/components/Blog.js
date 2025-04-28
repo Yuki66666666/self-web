@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Blog.css';
 
 function Blog() {
@@ -150,39 +151,46 @@ function Blog() {
   };
 
   return (
-    <section id="blog" className="section">
-      <div className="section-header">
-        <h2 className="section-title">Blog</h2>
-        <button onClick={toggleLanguage} className="language-toggle">
-          {language === 'zh' ? 'English' : '中文'}
-        </button>
+    <div className="blog-page">
+      <div className="blog-hero">
+        <h1>Blog</h1>
+        <p>Thoughts, experiences, and insights about venture capital and technology</p>
       </div>
-      <div className="blog-container">
-        {blogPosts[language].map(post => (
-          <div className="blog-post" key={post.id}>
-            <div className="blog-content full-width">
-              <h3>{post.title}</h3>
-              <p className="blog-date">{post.date}</p>
-              <p className="blog-summary">{post.summary}</p>
-              <button onClick={() => openModal(post)} className="read-more">Read More</button>
+
+      <div className="blog-main">
+        <div className="section-header">
+          <h2 className="section-title">Articles</h2>
+          <button onClick={toggleLanguage} className="language-toggle">
+            {language === 'zh' ? 'English' : '中文'}
+          </button>
+        </div>
+        <div className="blog-container">
+          {blogPosts[language].map(post => (
+            <div className="blog-post" key={post.id}>
+              <div className="blog-content full-width">
+                <h3>{post.title}</h3>
+                <p className="blog-date">{post.date}</p>
+                <p className="blog-summary">{post.summary}</p>
+                <button onClick={() => openModal(post)} className="read-more">Read More</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {showModal && activePost && (
+          <div className="blog-modal" onClick={handleModalClick}>
+            <div className="blog-modal-content">
+              <span className="close-button" onClick={closeModal}>&times;</span>
+              <div className="blog-modal-body" dangerouslySetInnerHTML={{ __html: activePost.content }}></div>
             </div>
           </div>
-        ))}
-      </div>
-      
-      {showModal && activePost && (
-        <div className="blog-modal" onClick={handleModalClick}>
-          <div className="blog-modal-content">
-            <span className="close-button" onClick={closeModal}>&times;</span>
-            <div className="blog-modal-body" dangerouslySetInnerHTML={{ __html: activePost.content }}></div>
-          </div>
+        )}
+        
+        <div className="blog-cta">
+          <Link to="/" className="back-home">Back to Home</Link>
         </div>
-      )}
-      
-      <div className="blog-cta">
-        <a href="#blog" className="view-all-posts">View All Posts</a>
       </div>
-    </section>
+    </div>
   );
 }
 

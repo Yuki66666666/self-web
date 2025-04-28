@@ -31,14 +31,14 @@ nav {
   align-items: center;
 }
 
-.nav-links a {
+.nav-links a, .nav-links Link {
   text-decoration: none;
   color: #333;
   font-weight: 500;
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links Link:hover {
   color: #007BFF;
 }
 
