@@ -3,6 +3,7 @@
   padding-bottom: 60px;
   background: #fffaf0; /* Soft cream yellow background */
   position: relative;
+  padding-top: 80px; /* Add padding to account for fixed header */
 }
 
 .blog-page::before {
@@ -21,11 +22,12 @@
 .blog-hero {
   background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%); /* Gold gradient */
   color: #333;
-  padding: 100px 5%;
+  padding: 80px 5% 100px; /* Adjusted padding */
   text-align: center;
   position: relative;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: -80px; /* Compensate for the page padding */
 }
 
 .blog-hero::after {
@@ -310,10 +312,11 @@
 }
 
 .blog-modal-content {
+  margin-top: 80px;
+  max-height: calc(90vh - 80px);
   background-color: white;
   width: 90%;
   max-width: 800px;
-  max-height: 90vh;
   overflow-y: auto;
   border-radius: 8px;
   position: relative;

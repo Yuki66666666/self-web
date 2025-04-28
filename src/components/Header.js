@@ -44,8 +44,8 @@ function Header() {
           <Link to="/" onClick={() => handleScrollToElement('about')}>About</Link>
           <Link to="/" onClick={() => handleScrollToElement('education')}>Education</Link>
           <Link to="/" onClick={() => handleScrollToElement('experience')}>Experience</Link>
-          <Link to="/blog" onClick={handleBlogClick}>Blog</Link>
-          <Link to="/" onClick={() => handleScrollToElement('contact')} className="book-button">Contact Me</Link>
+          <Link to="/blog" onClick={handleBlogClick} className={['/', '/blog'].includes(location.pathname) ? 'book-button' : ''}>Blog</Link>
+          <Link to="/" onClick={() => handleScrollToElement('contact')}>Contact Me</Link>
         </div>
       </nav>
     </header>
