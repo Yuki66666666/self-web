@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import './Header.css';
 
 function Header() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleScrollToElement = (elementId) => {
     if (location.pathname === '/') {
@@ -13,11 +15,13 @@ function Header() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+    setMobileMenuOpen(false);
   };
 
   const handleBlogClick = (e) => {
     e.preventDefault();
     navigate('/blog');
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -33,13 +37,20 @@ function Header() {
     }
   }, [location]);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <header>
       <nav>
         <div className="logo">
           <h3>Eric Yu</h3>
         </div>
-        <div className="nav-links">
+        <div className="mobile-menu-button" onClick={toggleMobileMenu}>
+          {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+        <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
           <Link to="/" onClick={() => handleScrollToElement('home')}>Home</Link>
           <Link to="/" onClick={() => handleScrollToElement('about')}>About</Link>
           <Link to="/" onClick={() => handleScrollToElement('education')}>Education</Link>
